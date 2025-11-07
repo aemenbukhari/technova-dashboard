@@ -1,3 +1,5 @@
-main.py
-requirements.txt
-technova_data.csv
+streamlit
+pandas
+plotly
+
+
