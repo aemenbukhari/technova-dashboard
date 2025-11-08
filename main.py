@@ -93,7 +93,7 @@ col3.metric("% Projects On-Time", f"{on_time_percent:.1f}%")
 
 #draw a horizontal line (divider) on your dashboard.
 st.markdown("---")
-st.markdown("---")
+#st.markdown("---")
 #syntax of markdown()
 #st.markdown("# Heading 1")
 #st.markdown("## Heading 2")
@@ -187,11 +187,9 @@ st.markdown(f"""
 - {"Most projects are on schedule." if on_time > delayed else "⚠️ Most projects are getting delayed — requires attention."}
 """)
 #prints a summary section with bullet points. """makes multiline, f for formatted string
-
-st.markdown("---")
+#st.markdown("---")
 st.markdown("---")
 # --------------Section2 related to profitability
-
 # ------------------------
 # Profitability (Cost vs Revenue)
 # -----------------------#
@@ -292,27 +290,19 @@ st.markdown(f"""
 - **Average Cost:** ${avg_cost:,.0f}  
 - **Average Revenue:** ${avg_revenue:,.0f}  
 - **Average Profit:** ${avg_profit:,.0f}  
-
 ### 
 - **Most Profitable Project:** `{top_project['Project_ID']}`  
   - Profit: ${top_project['Profit']:,.0f}  
   - Revenue: ${top_project['Project_Revenue']:,.0f}  
-
 - **Loss-Making Projects:** {loss_count}
-
-
-
-
 ### 
 - **Cost–Revenue Correlation:** {corr_cost_rev:.2f}
-
-
 - {"Higher costs are generally leading to higher revenues." if corr_cost_rev >= 0.6 else "⚠️ Higher spending does not strongly guarantee higher revenue."}  
 - {"Some projects are running at a loss — investigate cost overruns or pricing issues." if loss_count > 0 else "All projects are profitable — strong financial performance."}
 """)
 
 st.markdown("---")
-st.markdown("---")
+#st.markdown("---")
 
 #--------Section 3: Developers/Team Leads related-------------------
 # ------------------------
@@ -346,16 +336,13 @@ hours_by_team["Percentage"] = (hours_by_team["Hours_Worked"] / total_hours * 100
 st.markdown(f"""
 ### 
 - **Total Hours Worked Across All Teams:** {total_hours:,.0f}
-
 ### 
 - **Most Loaded Team Lead:** `{most_loaded['Team_Lead']}`  
   Hours Worked: **{most_loaded['Hours_Worked']:,.0f}**  
   Share of Total: **{(most_loaded['Hours_Worked'] / total_hours * 100):.1f}%**
-
 - **Least Loaded Team Lead:** `{least_loaded['Team_Lead']}`  
   Hours Worked: **{least_loaded['Hours_Worked']:,.0f}**  
   Share of Total: **{(least_loaded['Hours_Worked'] / total_hours * 100):.1f}%**
-
 """)
 
 #hourly rate vs team lead
@@ -392,16 +379,12 @@ rate_gap = highest_rate["Hourly_Rate"] - lowest_rate["Hourly_Rate"]
 st.markdown(f"""
 ### 
 - **Overall Average Hourly Rate:** ${overall_avg_rate:,.2f}
-
 ###
 - **Developer with highest Average Rate:** `{highest_rate['Team_Lead']}`  
   Rate: **${highest_rate['Hourly_Rate']:,.2f}**
-
 - **Developer with lowest Average Rate:** `{lowest_rate['Team_Lead']}`  
   Rate: **${lowest_rate['Hourly_Rate']:,.2f}**
-
 - **Rate Gap:** ${rate_gap:,.2f} difference between highest and lowest teams
-
 ### 
 - {"⚠️ Large variation in hourly rates — possible differences in seniority or billing structure." 
     if rate_gap > (overall_avg_rate * 0.25) 
@@ -410,8 +393,7 @@ st.markdown(f"""
 """)
 
 st.markdown("---")
-st.markdown("---")
-
+#st.markdown("---")
 #-------------------section 4----------------------------------------------#
 # ------------------------
 # Client Satisfaction Heatmap
@@ -486,13 +468,10 @@ worst_projects = project_avg[project_avg == min_project_rating].index.tolist()
 st.markdown(f"""
 ### Heatmap 1: Client Rating by Project ID
 - **Overall Average Rating:** {avg_rating_overall:.2f}
-
-- **Highest-Rating Clients:** {", ".join(best_clients)} (Avg Rating: {max_client_rating:.2f})
-- **Lowest-Rating Clients:** {", ".join(worst_clients)} (Avg Rating: {min_client_rating:.2f})
-
-- **Best Projects:** {", ".join(best_projects)} (Rating: {max_project_rating:.2f})  
-- **Worst Projects:** {", ".join(worst_projects)} (Rating: {min_project_rating:.2f})
-
+- **Highest Satisfaction Clients:** {", ".join(best_clients)} (Avg Rating: {max_client_rating:.2f})
+- **Lowest Satusfaction Clients:** {", ".join(worst_clients)} (Avg Rating: {min_client_rating:.2f})
+- **Best Projects by client rating:** {", ".join(best_projects)} (Rating: {max_project_rating:.2f})  
+- **Worst Projects by client rating:** {", ".join(worst_projects)} (Rating: {min_project_rating:.2f})
 **Insight:**  
 - Clients with lower ratings may be facing communication, timeline, or quality issues.  
 - Projects with consistently high ratings indicate strong delivery performance.
@@ -514,7 +493,6 @@ st.markdown(f"""
 - **Top-Rated Team Leads:** {", ".join(best_teams)} (Avg Rating: {max_team_rating:.2f})
 - **Lowest-Rated Team Leads:** {", ".join(worst_teams)} (Avg Rating: {min_team_rating:.2f})
 - **Rating Gap:** {rating_gap:.2f}
-
 **Insight:**  
 - {"Large rating variance detected — team consistency needs improvement." 
     if rating_gap >= 1 else 
